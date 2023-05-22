@@ -1,0 +1,43 @@
+from random import randint
+from time import sleep
+def cor_azul():
+    print('\033[34m')
+def cor_vermelho():
+    print('\033[31m')
+def cor_verde():
+    print('\033[32m')
+
+
+num = randint(1, 100)
+print('JOGO DE ADIVINHAÇÃO')
+while True:
+    try:
+        cor_azul()
+        jogador = int(input('Digite um número entre 1 e 100: '))
+        print('Processando informação...')
+        sleep(2)
+
+    except(ValueError, TypeError):
+        cor_azul()
+        print('Valor inválido, tente novamente! ')
+
+    else:
+        if jogador > 100:
+            cor_azul()
+            print('Valor acima do permitido, tente novamente!')
+
+        else:
+            if jogador > num:
+                cor_vermelho()
+                print(f'O Número {jogador} está errado, tente um valor menor! ')
+                cor_azul()
+                print('-=-'*20)
+            elif jogador < num:
+                cor_vermelho()
+                print(f'O Número {jogador} está errado, tente um valor maior! ')
+                cor_azul()
+                print('-=-'*20)
+            else:
+                cor_verde()
+                print(f'Parabéns você acertou o número gerado foi {num} o mesmo escolhido por você! ')
+                break
